@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vst-pier <vst-pier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: valerie <valerie@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:50:53 by vst-pier          #+#    #+#             */
-/*   Updated: 2023/01/24 13:29:01 by vst-pier         ###   ########.fr       */
+/*   Updated: 2023/07/04 10:47:59 by valerie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ static char	*empty_string(void)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		index_s1;
 	int		index_start;
 	int		index_end;
 	char	*new_string;
 
-	index_s1 = -1;
 	index_start = 0;
 	if (!s1 || !set)
 		return (NULL);

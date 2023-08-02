@@ -6,7 +6,7 @@
 /*   By: vst-pier <vst-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:13:09 by vst-pier          #+#    #+#             */
-/*   Updated: 2023/05/30 12:53:41 by vst-pier         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:29:54 by vst-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 //open function
 # include <fcntl.h>
 //close, read, write, access, dup, dup2, execve, fork, pipe, unlink functions
-# include <unistd.h> 
+# include <unistd.h>
 //malloc, free, exit functions			
-# include <stdlib.h> 
+# include <stdlib.h>
 //perror function
-# include <stdio.h>  
+# include <stdio.h>
 //strerror function
-# include <string.h> 
+# include <string.h>
 // wait and the waitpid functions
-# include <sys/wait.h> 
+# include <sys/wait.h>
 // libft functions
 # include "../libft/libft.h"
 
@@ -40,6 +40,8 @@ typedef struct pipe_list
 	int		outfile;
 	char	**command;
 	char	**tab_execve;
+	char	**envp;
+	char	**argv;
 }	t_pipe;
 
 //file_and_exec.c
@@ -52,7 +54,7 @@ int		execute_command(t_pipe pipex);
 int		message_sans_perror(void);
 int		message_perror(char *str);
 void	free_tab(char **tab);
-void	status_code_failure(int *fd_pipe, t_pipe pipex);
+void	status_code_failure(t_pipe pipex);
 
 //path.c
 char	*find_all_path(char **envp);
@@ -62,7 +64,7 @@ char	*test_path(char **tab_of_path);
 void	path(t_pipe *pipex, int i, char **argv);
 
 //process.c
-void	pid_zero(t_pipe pipex, int *fd_pipe, char **argv, int i);
+void	pid_zero(t_pipe pipex, int *fd_pipe, int i);
 void	pid_not_zero(int *fd_pipe);
-void	to_fork(t_pipe pipex, char **argv);
+void	to_fork(t_pipe pipex);
 #endif

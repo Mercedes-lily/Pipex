@@ -6,7 +6,7 @@
 /*   By: vst-pier <vst-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:53:17 by vst-pier          #+#    #+#             */
-/*   Updated: 2023/05/30 12:56:18 by vst-pier         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:29:37 by vst-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ void	free_tab_b(char **tab)
 	while (tab[index_tab])
 	{
 		free(tab[index_tab]);
+		tab[index_tab] = NULL;
 		index_tab++;
 	}
 	free(tab);
+	tab = NULL;
 }
 
-void	status_code_failure_b(int *fd_pipe, t_pipe pipex)
+void	status_code_failure_b(t_pipe pipex)
 {
 	free_tab_b(pipex.tab_of_all_path);
-	free(fd_pipe);
 	exit(EXIT_FAILURE);
 }

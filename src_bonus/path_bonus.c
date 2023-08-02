@@ -6,7 +6,7 @@
 /*   By: vst-pier <vst-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:47:08 by vst-pier          #+#    #+#             */
-/*   Updated: 2023/05/30 12:56:13 by vst-pier         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:44:02 by vst-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ void	path_b(t_pipe *pipex, int i, char **argv)
 	join_path_command_b(pipex->tab_of_all_path, pipex->command[0]);
 	pipex->path = test_path_b(pipex->tab_of_all_path);
 	if (pipex->path == NULL)
-		exit(EXIT_FAILURE);
+	{
+		free_tab_b(pipex->command);
+		perror("Wrong command");
+	}
 }

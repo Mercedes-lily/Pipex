@@ -6,14 +6,14 @@
 /*   By: vst-pier <vst-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 13:55:04 by vst-pier          #+#    #+#             */
-/*   Updated: 2023/05/30 12:56:44 by vst-pier         ###   ########.fr       */
+/*   Updated: 2023/07/11 14:49:08 by vst-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex_bonus.h"
 
 int	ft_dup_child_b(t_pipe *pipex, int *fd_pipe, int i)
-{	
+{
 	if (i == pipex->nb_commands - 1)
 		pipex->output = pipex->outfile;
 	else
@@ -24,9 +24,9 @@ int	ft_dup_child_b(t_pipe *pipex, int *fd_pipe, int i)
 }
 
 int	ft_dup_parent_b(t_pipe *pipex, int *fd_pipe, int i)
-{	
+{
 	if (i == 0)
-	pipex->input = pipex->infile;
+		pipex->input = pipex->infile;
 	else
 		pipex->input = fd_pipe[0];
 	if (dup2(pipex->infile, STDIN_FILENO) == -1)
@@ -54,6 +54,10 @@ int	execute_command_b(t_pipe pipex)
 		exit(EXIT_FAILURE);
 	ft_strlcpy(pipex.command[0], pipex.path, ft_strlen(pipex.path) + 1);
 	if (execve(pipex.path, pipex.command, NULL) == -1)
+	{
+		free_tab_b(pipex.command);
+		free(pipex.path);
 		return (message_perror_b("Probleme to execute the command "));
+	}
 	return (0);
 }

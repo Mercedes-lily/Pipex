@@ -6,7 +6,7 @@
 /*   By: vst-pier <vst-pier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:45:15 by vst-pier          #+#    #+#             */
-/*   Updated: 2023/01/24 13:37:33 by vst-pier         ###   ########.fr       */
+/*   Updated: 2023/07/11 11:57:45 by vst-pier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-			new->next = *lst;
-			*lst = new;
+	new->next = *lst;
+	*lst = new;
 }
